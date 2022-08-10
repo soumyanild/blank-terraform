@@ -9,13 +9,12 @@ terraform {
     region = "ap-south-1"
     }
 }
-
-resource "aws_instance" "public_inst_1" {
-  ami           = "ami-0c1a7f89451184c8b"
-  instance_type = "t2.micro"
-
+resource "aws_vpc" "module" {
+  cidr_block       = "10.0.0.0/24"
+  instance_tenancy = "default"
   tags = {
-    Name = "EC2-Module"
-    IAC = "True"
+    Name = "terra-bitbucket"
+    Terraform = "True"
+    Owner = "Soumyanil"
   }
 }
